@@ -1,0 +1,167 @@
+%!TEX program = lualatex
+%!TEX program = pdflatex
+\documentclass[12pt, a4paper]{report}
+
+\usepackage{calc}
+\usepackage{eso-pic}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{titletoc,tocloft}
+\usepackage{emoji}
+\usepackage{xcolor,mdframed}
+\usepackage{blindtext}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\setlength{\cftchapnumwidth}{1.5cm}
+\setcounter{tocdepth}{1}
+
+\geometry{legalpaper, margin=3cm}
+\graphicspath{{./images/}}
+
+\AddToShipoutPictureBG{%
+	\includegraphics[width=\paperwidth,height=\paperheight]{background.png}
+}
+
+\definecolor{red}{RGB}{251,187,187}
+
+\newtcolorbox[auto counter,number within=section]{caja}[1][]{%
+  enhanced jigsaw,colback=red,colframe=red,coltitle=red,
+  sharp corners,
+  leftrule=26mm,
+  underlay unbroken and first={\node[below,text=black,anchor=east]
+  at ([xshift=2mm]interior.base west) {\includegraphics[scale=0.55]{warnning.png}};},
+  %%%%%%%%%%%%%%%%%%%%%%%%
+  breakable,pad at break=1mm,
+  height=3cm
+}
+
+\AtBeginDocument{%
+  \addtocontents{toc}{\large}
+  \addtocontents{lof}{\large}
+}
+
+\newenvironment{important}[1][]{%
+	\makebox[0pt][l]
+}
+
+\begin{document}
+\begin{titlepage}
+	\centering
+	\title{%
+		\vspace{-6cm}
+		\includegraphics[scale=1.8]{Logo_42.png} \\
+		\vspace{1cm}
+		\huge Bangkok Discovery Piscine\\
+		\vspace{.6cm}
+		\LARGE Welcome Booklet
+		}
+
+	% \author{made with \emoji{heart} by tliangso}
+	\date{%
+		\vspace{2.2cm}
+		\it\normalsize Summary: \\
+		This Piscine is designed to help students to learn the basics of programming and to get familiar with the 42's learning environment. \\
+		The course is divided into 3 parts: Shell, HTML/CSS and JavaScript. \\
+		The first part is Shell, which will teach you the basics of using the command line. \\
+		The second part is HTML/CSS, which will teach you the basics of web development.\\
+		The last part is JavaScript, which will teach you the basics of programming in JavaScript.\\
+		\vspace{.8cm}
+		Version: 1.0
+		}
+	\maketitle
+
+
+	\end{titlepage}
+\newpage
+	\renewcommand{\thechapter}{\Roman{chapter}}
+	{\small \tableofcontents}
+
+\newpage
+
+\chapter{A word about this Discovery Pool}
+	\normalsize Welcome !
+		\\
+	\indent You will begin the first cell of this discovery pool of computer programming. We want
+		to both show you what the code is that makes up the software you use every day, and at
+		the same time experience peer-learning, an educational model of 42.
+		\\
+	\indent Programming involves logic (not math). It provides you with elementary bricks, which
+		you assemble as you wish. There is never THE solution to a problem. There will be your
+		solution, there will be those of each of your neighbors. Slow or fast, ugly or beautiful, if
+		that gets the job done, that's all it takes! This assembly of bricks will constitute a series
+		of orders (calculation, display, ...) that the computer will perform, in the order you have
+		chosen.
+		\\
+	\indent Rather than giving you a course with only one solution for each problem, and which
+		will probably be outdated in a few years, we have chosen to put you in a peer-learning
+		situation. You are going to look for the elements that could serve you for your challenge,
+		sort out those that are actually interesting by testing and manipulating them, and create
+		your own program. To do this, discuss with others, exchange your points of view, find
+		new ideas together, and finally test for yourself even to convince you that it works.
+		\\
+	\indent Peer-evaluation is a key moment to discover other ways of doing things, as well as
+		special cases that you have not thought of and that could undermine your program (think
+		about your degree of nervousness with software which crashes). Like different clients who
+		don't pay attention to the same things, each reviewer will be different from the last. And
+		who knows, you might have made new acquaintances for later collaborations.
+		\\
+	\indent At the end of this pool, you will not have done the same things as the other par-
+		ticipants, you will not have validated the same projects, you will have chosen to do one
+		challenge rather than another ... .and that's normal! It's both a collective and a personal
+		experience. Everyone will benefit from what he or she experiences during this time.
+		\\
+	\indent Good luck to all, we hope you will like this discovery.
+
+\chapter{General Instructions}
+Unless explicitely specified, the following rules will apply every day of this Picine.
+	\begin{itemize}
+		\item This subject is the one and only trustable source. Don't trust any rumor.
+		\item This subject can be updated up to one hour before the turn-in deadline.
+		\item The assignments in a subject must be done in the given order. Later assignments
+				wont be rated unless all the previous ones are perfectly executed
+		\item Be careful about the access rights of your files and folders.
+		\item Your assignments will be evaluated by your Piscine peers.
+		\item All shell assignments must run on /bin/bash.
+		\item You \underline{must not} leave in your turn-in your workspace any file other than the ones
+				explicitly requested By the assignments.
+		\item You have a question? Ask your left neighbour. Otherwise, try your luck with your
+				right neighbor.
+		\item Every technical answer you might need is avaiable in the \textbf{man} or on the Internet.
+		\item Remember to use the Discord.
+		\item You must read the examples thoroughly. They can reveal requirements that are not obvious in
+				the assignment's description.
+		\item By Thor, by Odin! Use your brain!!!
+		\end{itemize}
+
+\chapter{Submission and peer-evaluation}
+	\begin{itemize}
+		\item \textbf{Submission} \\
+			You will have to set your project as complete on \textbf{Intra} and
+			upload your work to \textbf{Google Drive}
+			folder that will be provided to you.
+		\item \textbf{Peer Evaluation} \\
+			Both party must be present before evaulation start.
+			Evaluation can take place on site only, online evaluation is \textbf{Forbidden}.
+			You can and should contact your evaluator or evaulatee before proceeding to cancel the defence.
+		\item \textbf{Evaluator Late} \\
+			Evaluatee can choose to cancel their evaluation without
+			losing evaluation points if the other party are at least 15 min late.
+		\item \textbf{Evaluatee Late} \\
+			Evaluator begin the evaluation and mark evaluatee as missing.
+		\item \textbf{The Evaluation} \\
+			Evaluator are encourage to ask evaluatee any question \textbf{related} to the subject.
+			Evaluator may ask more question than what the subject ask for.
+			If evaluatee cannot defend point(s) or answer question(s) evaluator deem crucial to the subject,
+			evaluator can choose to end the evaluation and fail the evaluatee.
+		\item \textbf{Post Evaluation} \\
+			After the evaluation, evaluator need to record the result in the \textbf{Google Sheet} provided and
+			submit the evaluation result on \textbf{Intra} after.
+		\end{itemize}
+
+	\begin{caja}
+		\vspace{.8cm}
+		\fontfamily{lmr}\footnotesize Please note, failure to follow any of the above points will result in instant failure of your project!
+		\end{caja}
+
+
+\end{document}
