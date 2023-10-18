@@ -1,0 +1,187 @@
+\documentclass[12pt, a4paper]{report}
+
+\usepackage{calc}
+\usepackage{eso-pic}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{titletoc,tocloft}
+\usepackage{xcolor,mdframed}
+\usepackage{blindtext}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage[most]{tcolorbox}
+\usepackage{color}
+\usepackage{verbatim}
+
+\setlength{\cftchapnumwidth}{1.5cm}
+\setcounter{tocdepth}{1}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
+
+\makeatletter
+\def\inverseverbatim{%
+  \color{white}\scriptsize
+  \def\verbatim@processline{%
+	{\setbox0=\hbox{\the\verbatim@line}%
+	\hsize=\textwidth \the\verbatim@line\par}}%
+  \@minipagetrue
+  \@tempswatrue
+  \@totalleftmargin\z@
+  \setbox0=\vbox\bgroup \verbatim
+}
+\def\endinverseverbatim{%
+  \endverbatim
+  \unskip\setbox0=\lastbox
+  \egroup
+  \colorbox{black}{\box0}%
+}
+\makeatother
+
+\renewcommand{\thechapter}{\Roman{chapter}}
+
+\geometry{legalpaper, margin=3cm}
+\graphicspath{{../images/}}
+
+\AddToShipoutPictureBG{%
+	\includegraphics[width=\paperwidth,height=\paperheight]{background.png}
+}
+
+\definecolor{red}{RGB}{251,187,187}
+
+\newtcolorbox[auto counter,number within=section]{caja}[1][]{%
+  enhanced jigsaw,colback=red,colframe=red,coltitle=red,
+  sharp corners,
+  leftrule=26mm,
+  underlay unbroken and first={\node[below,text=black,anchor=east]
+  at ([xshift=2mm]interior.base west) {\includegraphics[scale=0.55]{warnning.png}};},
+  %%%%%%%%%%%%%%%%%%%%%%%%
+  breakable,pad at break=1mm,
+  height=3cm
+}
+
+\AtBeginDocument{%
+  \addtocontents{toc}{\large}
+  \addtocontents{lof}{\large}
+}
+
+\newenvironment{important}[1][]{%
+	\makebox[0pt][l]
+}
+
+\begin{document}
+\begin{titlepage}
+	\centering
+	\title{%
+		\vspace{-6cm}
+		\includegraphics[scale=1.8]{Logo_42.png} \\
+		\vspace{1cm}
+		\huge Piscine Discovery\\
+		\vspace{.6cm}
+		\LARGE Rush
+		}
+
+	% \author{made with \emoji{heart} by tliangso}
+	\date{%
+		\vspace{2.2cm}
+		\it\normalsize Summary: \\
+		Summary: This rush is there to make you set up a mini showcase site composed of 3 pages, and to make you practice all the basics seen during this week. \\
+		\vspace{.8cm}
+		Version: 3.0 (42 Bangkok Edition)
+		}
+	\maketitle
+
+
+	\end{titlepage}
+% \newpage
+% 	\renewcommand{\thechapter}{\Roman{chapter}}
+% 	{\small \tableofcontents}
+
+\newpage
+
+\chapter{Foreword}
+	\normalsize \textbf{Gollum} : What has he done? Stupid Hobbit! You are damaging them.\vspace{.2cm}\\
+	\textbf{Sam} : Damaging what? They've got almost no meat. What we need are potatoes.\vspace{.2cm}\\
+	\textbf{Gollum} : What are potatoes my precious? What are they?\vspace{.2cm}\\
+	\textbf{Sam} : Potatoes you idiot! Broiled, mashed, fried, sliced or boiled with sauce. Nice fat \indent \indent sliced and fried in oil to go with fried fish. Even you won't resist.\vspace{.2cm}\\
+	\textbf{Gollum} : Oh but we will resist. To waste perfect fish like that... We prefer fish raw \indent \indent and alive, keep your nasty fries.\vspace{.2cm}\\
+	\textbf{Sam} : You are impossible.
+
+\chapter{General Instructions}
+Unless explicitely specified, the following rules will apply every day of this Picine.
+	\begin{itemize}
+		\item This subject is the one and only trustable source. Don't trust any rumor.
+		\item This subject can be updated up to one hour before the turn-in deadline.
+		\item The assignments in a subject must be done in the given order. Later assignments
+				wont be rated unless all the previous ones are perfectly executed
+		\item Be careful about the access rights of your files and folders.
+		\item Your assignments will be evaluated by your Piscine peers.
+		\item All shell assignments must run on /bin/bash.
+		\item You \underline{must not} leave in your turn-in your workspace any file other than the ones
+				explicitly requested By the assignments.
+		\item You have a question? Ask your left neighbour. Otherwise, try your luck with your
+				right neighbor.
+		\item Every technical answer you might need is avaiable in the \textbf{man} or on the Internet.
+		\item Remember to use the Discord.
+		\item You must read the examples thoroughly. They can reveal requirements that are not obvious in
+				the assignment's description.
+		\item By Thor, by Odin! Use your brain!!!
+		\end{itemize}
+
+\chapter{Mandatory part}
+
+	Following your first week of web training, in this last day you will have to set up a mini
+	one-page site with your resumes. For those who don't know what a one-page site is, check
+	out the list of sites present \href{https://bootstrapmade.com/bootstrap-resume-cv-templates/}{here}.
+
+	\vspace{.2cm}Of course, we won't ask you to make this one as complete as these examples..\\
+
+	\vspace{.2cm}Your first page will simply be a summary to go to the two CVs with two links.\\
+
+	\vspace{.2cm}This first page must be \href{https://www.w3schools.com/html/html_responsive.asp}{responsive} and pretty! The use of css framework like bootstrap is strongly advised.\\
+
+	A resume page must have at least all the following elements:
+
+	\begin{itemize}
+
+		\item \textbf{Navigation bar} : with links to the various sections of your page. Ensure that this navigation bar remains \textbf{fixed at the top} of the page for easy navigation.
+
+		\item  \textbf{About section} that introduces you. You \textbf{must} include your name, a photo or image of yourself, and some interesting information about your background, education, or personal interests.
+
+		\item  \textbf{Showcase section} to highlight your qualifications, which may include professional experiences, skills, or other relevant accomplishments. You can format this section with any content structures to highlight your achievements and qualifications effectively.
+
+		\item  \textbf{Contact section} where you provide \textbf{links} to your social networks or professional profiles. Common options include links to platforms like Instagram, GitHub, LinkedIn, and any others that are relevant to your identity.
+
+	\end{itemize}
+
+	Feel free to customize and modify the sections, their content, and the overall design to match your personal preferences and the desired style of your resume page. You can also consider adding additional sections such as "Education," "Projects," or "Achievements" to further tailor your resume to your needs. We strongly advise you to use templates to help you.
+
+	
+
+\chapter{Submission and peer-evaluation}
+	\begin{itemize}
+		\item In the \textbf{discovery\_piscine} folder at the root of your home, create a new rush folder and navigate to it. 
+		\item For this day your rendering file will be in the \textbf{rush} folder. This is where you will do all your work.
+		\item You need to put an author file in the root of your rendering folder containing your
+		logins, each on one line, and followed by a '\textbackslash n':
+	\end{itemize}
+	\begin{inverseverbatim}
+		$> cat -e author
+		krchuaip$
+		tliangso$
+		$>
+	\end{inverseverbatim}
+
+	\begin{caja}
+		\vspace{.8cm}
+		\fontfamily{lmr}\footnotesize Please note, during your defense anything that is not present in the folder for the day will not be checked.
+		\end{caja}
+
+
+\end{document}
