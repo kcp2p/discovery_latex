@@ -1,5 +1,0 @@
-\large 
-\contentsline {chapter}{\numberline {I}A word about this Discovery Pool}{2}{}%
-\contentsline {chapter}{\numberline {II}General Instructions}{3}{}%
-\contentsline {chapter}{\numberline {III}Submission and peer-evaluation}{4}{}%
-\contentsfinish 
